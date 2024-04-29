@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="images/Logo.png">
+<title>Heist Unravel</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Added to align items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white; /* Changed text color to white */
+    font-family: Arial, sans-serif; /* Added a font-family */
+  }
+
+  #topText {
+    position: absolute;
+    top: 50px; /* Adjust the top position as needed */
+    font-size: 24px; /* Adjust font size as needed */
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  #container {
+    position: relative;
+    width: 110vw;
+    height: 80vh; /* Adjusted height for better image visibility */
+    overflow: hidden;
+  }
+
+  #image {
+    width: 100%;
+    height: 100%;
+    margin-top: 25px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .zoomed {
+    transform: scale(2);
+  }
+
+  #centerButton {
+    margin-top: 10px; /* Adjust margin as needed */
+    padding: 7px;
+    font-size:15px; /* Adjust font size as needed */
+    background-color:#0097B2;/* Button background color */
+    color: black; /* Button text color */
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  #centerButton:hover {
+    opacity: 0.9;
+      color: white; /* Hover background color */
+  }
+  #navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      padding: 10px 20px;
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    /* Logo styles */
+    #logo {
+      width: 10%; /* Adjust size as needed */
+      height: auto;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    /* Timer button styles */
+    #timer-button {
+      background-color: #0097B2;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+</style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar">
+    <div class="flip-box">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <img src="images/Logo.png" alt="Logo" id="logo" />
+        </div>
+        <div class="flip-box-back">
+          <img src="images/Logo.png" alt="Logo" id="logo" />
+        </div>
+      </div>
+    </div>
+    <div class="namecontainer">
+      <div class="inside"></div>
+    </div>
+    <button id="timer-button"><div id="timer">00:00</div></button>
+  </div>
+<div id="topText">DESTINATION CLUE (Hint:Click to Zoom-in)</div><br><br>
+
+<div id="container">
+  <img src="images/Clue phase3.png" alt="Find the Clues" id="image">
+</div>
+
+<button id="centerButton">Got it!</button>
+
+<script>
+const image = document.getElementById("image");
+
+// Add event listener to image for click
+image.addEventListener("click", handleZoom);
+
+// Function to handle click event
+function handleZoom(event) {
+  const zoomed = image.classList.contains("zoomed");
+  if (zoomed) {
+    // Zoom out
+    image.classList.remove("zoomed");
+    image.style.transform = "scale(1)"; // Reset scale to 1 for zoom-out
+  } else {
+    // Zoom in to the clicked position
+    const x = (event.offsetX / image.clientWidth) * 100;
+    const y = (event.offsetY / image.clientHeight) * 100;
+    image.style.transformOrigin = `${x}% ${y}%`;
+    image.classList.add("zoomed");
+    image.style.transform = "scale(2)"; // Zoom to scale 2
+  }
+}
+
+// Add click event to center button
+const centerButton = document.getElementById("centerButton");
+centerButton.addEventListener("click", redirectToIndex);
+
+// Function to redirect to index.html
+function redirectToIndex() {
+  window.location.href = "23_solved_phase5.html"; // Change the URL as needed
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>

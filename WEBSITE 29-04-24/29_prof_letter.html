@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>* {
+      box-sizing: border-box;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 20px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: white;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: black;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      font-family: "Josefin Slab", serif;
+    }
+    
+    .background {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      z-index: -1;
+
+    }
+    
+    .woolf {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background-position: top left;
+      background-size: 500px;
+      background-repeat: no-repeat;
+      z-index: 0;
+      mix-blend-mode: hard-light;
+ 
+    }
+    
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      height: auto;
+      filter: drop-shadow(5px 5px 15px black);
+    }
+    
+    .content {
+      position: relative;
+      top: 10px;
+      background: #fff;;
+      opacity: 0.6;
+      background-size: 1000px;
+      background-position: center right;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 50%;
+      height: auto;
+      padding: 30px 80px 50px 80px;
+      z-index: 1;
+      border-radius: 30px;
+      height: 90vh;
+      clip-path: polygon(
+        0% 0%,
+        0% 93%,
+        5% 98%,
+        6% 99%,
+        8% 95%,
+        12% 94%,
+        15% 97%,
+        17% 93%,
+        20% 98%,
+        22% 97%,
+        25% 99%,
+        31% 94%,
+        35% 93%,
+        39% 96%,
+        43% 93%,
+        45% 94%,
+        47% 95%,
+        50% 92%,
+        52% 96%,
+        54% 93%,
+        58% 92%,
+        60% 95%,
+        62% 93%,
+        65% 96%,
+        69% 93%,
+        72% 93%,
+        75% 94%,
+        79% 97%,
+        81% 94%,
+        85% 93%,
+        88% 92%,
+        90% 95%,
+        93% 93%,
+        95% 92%,
+        97% 95%,
+        100% 97%,
+        100% 0%
+      );
+      overflow: auto;
+    }
+    
+    @media screen and (max-width: 1650px) {
+      .content {
+        width: 60%;
+      }
+    }
+    
+    @media screen and (max-width: 1500px) {
+      .content {
+        width: 70%;
+      }
+    }
+    
+    @media screen and (max-width: 868px) {
+      .content {
+        padding: 30px 60px 50px 60px;
+        width: 75%;
+      }
+    }
+    
+    @media screen and (max-width: 560px) {
+      .content {
+        padding: 30px 30px 50px 30px;
+        width: 80%;
+      }
+    }
+    
+    h1 {
+      font-family: "Yellowtail", cursive;
+      font-size: 80pt;
+      margin: 0;
+      font-weight: 1;
+      color: #0097B2;
+      mix-blend-mode: color-burn;
+    }
+    
+    @media screen and (max-width: 1071px) {
+      h1 {
+        font-size: 60pt;
+      }
+    }
+    
+    @media screen and (max-width: 756px) {
+      h1 {
+        font-size: 46pt;
+        line-height: 46pt;
+        padding: 20px 0px;
+      }
+    }
+    
+    @media screen and (max-width: 370px) {
+      h1 {
+        font-size: 40pt;
+      }
+    }
+    
+    hr {
+      width: 80%;
+      opacity: 0.7;
+      margin-top: 20px;
+      margin-bottom: -60px;
+      border-radius: 50px;
+      padding: 40px;
+    }
+    
+    h2,h1 {
+      font-size: 3.5vw;
+      font-weight: 300;
+      color: red;
+      text-shadow: 0.3px 0.3px 2px black;
+    }
+    
+    h3 {
+      text-decoration: 1px dashed underline #0097B2;
+      letter-spacing: 2px;
+      font-size: 20pt;
+      font-weight: 300;
+      font-style: italic;
+      color: black;
+      margin-bottom: 40px;
+    }
+    
+    @media screen and (max-width: 700px) {
+      h3 {
+        margin-bottom: 70px;
+      }
+    }
+    
+    p {
+      font-size: 16pt;
+      font-weight: 400;
+      line-height: 28pt;
+      color: black;
+      letter-spacing: 0.5px;
+      word-spacing: 3px;
+      text-shadow: 0.2px 0.2px 1.3px Sienna;
+    }
+    
+    p:first-of-type {
+      align-self: flex-start;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    p span {
+      font-family: "Sassy Frass", cursive;
+      font-size: 600%;
+      font-weight: 1;
+      opacity: 0.8;
+    }
+    
+    @media screen and (max-width: 600px) {
+      p {
+        font-size: 14pt;
+      }
+    }
+    </style>
+</head>
+<body>
+  <canvas id="winter-field"></canvas>
+  <div class="background"></div>
+<div class="woolf"></div>
+
+<div class="content-container">
+	<div class="content">
+
+		<h1 style="font-size: 4.5vw;"></h1>
+<h2 style="color: #0097B2;">Congratulations Team !</h2>
+<br><br>
+		<h3>by Professor ❤️</h3>
+
+		<p><span>D</span>ear Participants,</p><br>
+
+		<p>I extend my heartfelt congratulations to each of you for successfully completing the intricate phases of the Heist Unravel event 💥. Your dedication, intelligence, and teamwork have truly shone throughout this challenging journey.</p>
+<br>
+		<p>From the initial recruitment phase where you showcased your skills by solving the problem to the intense planning phase where you deciphered clues and navigated through obstacles 🚧, each step required meticulous effort and strategic thinking.
+
+      As you entered the Imperial Treasury and faced unforeseen challenges, including the loss of a team member, your resilience and determination remained unwavering. Your ability to unravel cryptic messages, decode puzzles 🧩 , and execute strategic plans has been commendable.</p>
+<br>
+		<p>On behalf of the organizing team and myself 👥, I want to express our deepest appreciation for your participation 👏. Your enthusiasm and commitment to the Heist Unravel event have made it a resounding success ⚡️.</p>
+<br>
+		<p>Once again, congratulations on your exceptional performance ✨. May your future endeavors be filled with continued success and adventures.</p>
+
+	<br><p>Best regards,<br>Professor ❤️‍🔥<br>Mastermind & Organizer - <b style="color: #0097B2;">Heist Unravel Team</b> 🔥</p>
+
+	</div>
+</div>
+<script>
+  function init() {
+      var portrait = document.getElementById('winter-field');
+      var context = portrait.getContext('2d');
+      var w = portrait.width = window.innerWidth; // Set canvas width to viewport width
+      var h = portrait.height = window.innerHeight; // Set canvas height to viewport height
+      var background = new Image();
+
+      var snowflakes = [];
+
+      function snowfall (){
+          context.clearRect(0, 0, w, h);
+          context.drawImage(background, 0, 0, w, h); // Draw background with adjusted size
+          addSnowFlake();
+          snow();
+      };
+
+      function addSnowFlake (){
+          var x = Math.ceil(Math.random() * w);
+          var s = Math.ceil(Math.random() * 3);
+          snowflakes.push({"x": x, "y": 0, "s": s});
+      };
+
+      function snow() {
+          for (var i = 0; i < snowflakes.length; i++) {
+              var snowflake = snowflakes[i];
+              context.beginPath();
+              context.fillStyle = "rgba(255, 255, 255, 0.7)";
+              context.arc(snowflake.x, snowflakes[i].y += snowflake.s, snowflake.s / 2, 0, 2 * Math.PI);
+              context.fill();
+              if (snowflakes[i].y > h) {
+                  snowflakes.splice(i, 1);
+              }
+          }
+      }
+
+      portrait.addEventListener('mousemove', function(event) {
+          var mouseX = event.clientX;
+          var mouseY = event.clientY;
+
+          for (var i = 0; i < snowflakes.length; i++) {
+              var snowflake = snowflakes[i];
+              var distance = Math.sqrt(Math.pow(mouseX - snowflake.x, 2) + Math.pow(mouseY - snowflake.y, 2));
+              if (distance < 50) { // Adjust the value as needed for the hover radius
+                  snowflake.x += (snowflake.x - mouseX) * 0.1;
+                  snowflake.y += (snowflake.y - mouseY) * 0.1;
+              }
+          }
+      });
+
+      setInterval(snowfall, 20);
+  }
+  window.onload = init;
+</script>
+</body>
+</html>

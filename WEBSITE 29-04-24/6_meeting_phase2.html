@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>
+        /* Styling for video background */
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Use viewport width */
+            height: 100vh; /* Use viewport height */
+            object-fit: cover; /* Cover the entire viewport */
+            z-index: -1;
+        }
+        /* Styling for content on top of the video */
+        .content-container {
+            position: absolute;
+            top: 58%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+        /* Styles for the card */
+        .cardmeeting {
+            background-color:black;
+            padding: 2vw; /* Responsive padding */
+            border-radius: 2vw; /* Responsive border radius */
+            box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.1); /* Responsive box shadow */
+            max-width: 90vw; /* Maximum width relative to viewport */
+            margin: auto; /* Center the card horizontally */
+            opacity: 0.8;
+            width: 100%;
+            height: 100%;
+        }
+        /* Button styles */
+        .cardmeeting button {
+            padding: 2vh 4vw; /* Responsive padding */
+            font-size: large; /* Responsive font size */
+            background-color: #0097B2; /* Button color */
+            color: white; /* Text color */
+            border: none;
+            border-radius: 2vh; /* Responsive border radius */
+            cursor: pointer;
+            opacity: 1;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+        /* Hover effect for button */
+        .cardmeeting button:hover {
+            background-color: #0097B2; /* Darker color on hover */
+        }
+        /* Responsive font size for text */
+        @media screen and (max-width: 768px) {
+            .cardmeeting h2, .cardmeeting p {
+                font-size: 4vh; /* Adjust as needed */
+            }
+        }
+        @keyframes enlarge {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        #letter{
+            font-size: 3vh;
+            line-height: 3vh;
+            text-align: justify;
+        }
+        /* Styling for navbar */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 10px 20px;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+
+        /* Timer button styles */
+        #timer-button {
+            background-color: #0097B2;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Inside container styles */
+        .inside {
+            font-size: 5vw;
+            color: #0097B2;
+            opacity: 0;
+            animation: enlarge 1s forwards;
+            margin-top: 0%;
+        }
+        @keyframes enlarge {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="images/Logo.png" alt="Logo" id="logo">
+                </div>
+                <div class="flip-box-back">
+                    <img src="images/Logo.png" alt="Logo" id="logo">
+                </div>
+            </div>
+        </div>
+        <div class="namecontainer">
+            <div class="inside">PHASE TWO</div>
+        </div>
+        <button id="timer-button"><div id="timer">00:00</div></button>
+    </div>
+
+    <!-- Video background -->
+    <video id="video-background" autoplay muted loop style="width: 100%;">
+        <source src="videos/planning.mp4" type="video/mp4">
+    </video>
+
+    <!-- Content container -->
+    <div class="content-container">
+        <!-- Responsive Card -->
+        <div class="cardmeeting">
+            <h2>PLANNING</h2><br>
+            <p id="letter">Dear Participants,<br>I extend my warmest congratulations to each of you for your outstanding performance in completing Phase 1 of the Heist!. Your commitment and strategic acumen have significantly contributed to our progress.</p>
+            <p id="letter">I am thrilled to announce a pivotal meeting dedicated to unveiling the intricate blueprint for our upcoming heist operation. This meeting is scheduled to provide a comprehensive understanding of our next strategic moves, ensuring the precision and success of our collective efforts. <br> <br><b style="color: red;">- Professor  &#10084;</b></p><br>
+            <button style="font-size: small;" id="join">Ready to join the meeting</button>
+        </div>
+    </div>
+
+    <!-- JavaScript and other scripts -->
+    <script src="script.js"></script>
+    <script>      
+        const centerButton = document.getElementById("join");
+        centerButton.addEventListener("click", redirectToIndex);
+        // Function to redirect to index.html
+        function redirectToIndex() {
+          window.location.href = "7_phase-2.html"; // Change the URL as needed
+        }
+    </script>
+</body>
+</html>

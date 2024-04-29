@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>
+        /* Styling for video background */
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150vw; /* Use viewport width */
+            height: 100vh; /* Use viewport height */
+            object-fit: cover; /* Cover the entire viewport */
+            z-index: -1;
+        }
+        /* Styling for content on top of the video */
+        .content-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+        /* Other styles as needed */
+        .namecontainer {
+            position: relative;
+            text-align: center;
+            margin-top: 0px;
+        }
+        .inside {
+            font-size:25px;
+            opacity: 0;
+            animation: enlarge 1s forwards;
+            margin-top: 0%; 
+            color: white;
+            font-weight: 1000px;
+            font-family:'Times New Roman', Times, serif;
+        }
+        @keyframes enlarge {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        /* Style for input and button */
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px solid white; /* Underline border */
+            background-color: transparent; /* Transparent background */
+            color: white;
+            margin-top: 20px; /* Adjust margin as needed */
+            padding: 5px 10px; /* Adjust padding as needed */
+            font-size: 16px; /* Adjust font size as needed */
+            font-size: larger;
+        }
+        input[type="submit"] {
+            margin-top: 10px; /* Adjust margin as needed */
+            padding: 8px 16px; /* Adjust padding as needed */
+            border: 2px solid white;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            font-size: 16px; /* Adjust font size as needed */
+        }
+        input[type="submit"]:hover {
+            background-color: transparent;
+            color: white;
+        }
+        input[type="text"]::placeholder{
+            color: white;
+        }
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            height: 30%;
+            width: 30%;
+            border-radius: 20px;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            transition:  0.3s ease; 
+        }
+        .popup-content {
+            background: whitesmoke;
+            border-radius: 5px;
+            width: 100%;
+            padding: 20px;
+            height: 90%;
+            font-size: large;
+            text-align: center;
+            opacity: 0.8;
+            color: black;
+        }
+        .popup .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+        .popup .close:hover {
+            color: #0097B2;
+        }
+        .emoji {
+            font-size: 50px;
+        }
+        /* Styling for navbar */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 10px 20px;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+        
+        /* Logo styles */
+        #logo {
+            width:10%; /* Adjust size as needed */
+            height: auto;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        /* Timer button styles */
+        #timer-button {
+            background-color: #0097B2;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div id="navbar">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="images/Logo.png" alt="Logo" id="logo">
+                </div>
+                <div class="flip-box-back">
+                    <img src="images/Logo.png" alt="Logo" id="logo">
+                </div>
+            </div>
+        </div>
+        <div class="namecontainer">
+            <div class="inside"></div>
+        </div>
+        <button id="timer-button"><div id="timer">00:00</div></button>
+    </div>
+    <!-- Video background -->
+    <video id="video-background" autoplay muted loop style="width: 100%;">
+        <source src="videos/Galaxy.mp4" type="video/mp4">
+    </video>
+
+    <!-- Content container -->
+    <div class="content-container">
+        <div class="namecontainer">
+            <div class="inside" >Enter the answer!</div>
+        </div>
+
+        <!-- Input field and submit button -->
+        <form id="answerForm" action="" method="post" onsubmit="checkAnswer(event)"> <!-- Adjust action and method as needed -->
+            <input type="text" id="answerInput" name="answer" placeholder=" Enter code">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <a href="#" class="close" onclick="closePopup()">&times;</a>
+            <p class="emoji">&#128549;</p>
+            <h2>Not It!</h2>
+            <p>Please try again..</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function checkAnswer(event) {
+            event.preventDefault(); // Prevent form submission
+            const userInput = document.getElementById("answerInput").value.trim().toLowerCase();
+            if (userInput === "answer6") {
+                window.location.href = "27_money_page.html";
+            } else {
+                document.getElementById("popup").style.display = "block";
+            }
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

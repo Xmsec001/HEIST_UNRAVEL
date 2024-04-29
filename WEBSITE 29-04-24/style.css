@@ -1,0 +1,604 @@
+*,
+:before,
+:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*Whole body*/
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  margin: 0;
+  overflow: hidden; /* Ensure canvas covers entire viewport */
+}
+@font-face {
+    font-family: mainfont;
+    src: url(NightmarePills-BV2w.ttf);
+}
+/*Snowfall*/
+canvas {
+  position: fixed; /* Fix canvas position */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  background: #000; /* Set background color */
+}
+
+/*Heist Unravel*/
+.namecontainer {
+  margin-top: 5vh;
+  width: 50vw;
+  height: 1.165em;
+  font-family: mainfont;
+  position: relative;
+  display: flex; /* Use flexbox to align text vertically */
+  flex-direction: column; /* Stack text vertically */
+  font-size:6vw;
+}
+.namecontainer div {
+  position: absolute;
+  left: 0;
+  text-transform: uppercase;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.upper {
+  top: 0;
+  height: 52.5%;
+  color: #0097B2;
+  overflow: hidden;
+  z-index: 3;
+  animation: moveUp 4s ease-in-out infinite;
+  background-color: black
+}
+
+.lower {
+  bottom: 0;
+  height: 100%;
+  background: linear-gradient(180deg, black 52.5%, #0097B2 52.5%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  z-index: 1;
+  animation: moveDown 4s ease-in-out infinite;
+}
+
+.inside {
+  position: absolute;
+  margin-top: 5.7vh;
+  transform: translateY(-40%);
+  text-align: center;
+  z-index: 2;
+  font-size: 3vh;
+  color: #fff;
+  animation: reveal 3000ms ease-in-out backwards 200ms,
+             glow 2500ms linear infinite 2000ms;
+}
+
+#navbar {
+  display: flex; /* Use flexbox to align items in a row */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space out items evenly */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  padding: 3vh 5vw; /* Adjust padding */
+  z-index: 9999;
+}
+
+#navbar #logo{
+  height: 25vh;
+  width: 25vh;
+  margin-right: 1vh;
+  border-radius: 50%;
+} 
+.welcome-text{
+  font-size: x-large;
+  text-align: center;
+  margin-left: 4.4vw;
+}
+#timer-button {
+  background-color: #0097B2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 2vh 3vh;
+  border-radius: .2vw;
+  margin-top: 0%;
+}
+
+#timer-button:hover {
+  background-color: #007083;
+}
+
+@keyframes reveal {
+    80%{
+      letter-spacing:0.5vw;
+    }
+    100% {
+      background-size: 300% 300%;
+    }
+  }
+  @keyframes glow {
+    40% {
+      text-shadow: 0 0 8px #0097B2;
+    }
+  }
+
+@keyframes moveUp {
+  0%,
+  100% {
+    top: 0;
+  }
+
+  50%,
+  70% {
+    top: -29px;
+  }
+}
+
+@keyframes moveDown {
+  0%,
+  100% {
+    top: 0;
+  }
+
+  50%,
+  70% {
+    top: 6px;
+  }
+}
+
+
+/*Card*/.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  display: flex;
+  margin-top: 13vh;
+  flex-direction: row;
+  border-color: #0097B2;
+}
+
+.card {
+margin-top: 20vh;
+  background-color: transparent;
+  border-radius: 10px;
+  height: 50vh;
+  width: 60vw; /* Adjust the height as needed */
+  color: white;
+  z-index: 99999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+.logo{
+height: 90%;
+width: 30%;
+float: left;
+margin-right: 2vw;
+z-index: 99999;
+}
+.logo:hover{
+opacity: .7;
+}
+#stry{
+font-family: 'Times New Roman', Times, serif;
+line-height: 6vh;
+text-align: justify;
+}
+.start #start{
+background-color: #0097B2;
+color: white;
+padding: 2vh 3vh;
+text-align: center;
+font-size: larger;
+border-radius: 0.2vw;
+border: none;
+font-family: 'Times New Roman', Times, serif;
+}
+.flip-box {
+  background-color: transparent;
+  height: 25vh;
+  width: 25vh;
+  perspective: 1000px;
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-box-front {
+  background-color: transparent;
+  color: black;
+}
+
+.flip-box-back {
+  background-color:transparent;
+  color: white;
+  transform: rotateY(180deg);
+}
+/*Inbox button*/
+.button-55 {
+  align-self: center;
+  background-color: white;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: cursive;
+  font-size: 100%;
+  outline: none;
+  padding: .55rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border-color: gainsboro;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+
+
+/* Add media queries for responsiveness */
+@media (max-width: 361px){
+ /* For screens smaller than 361px */
+.namecontainer {
+  font-size: 4vw; 
+  height: 1.169em;
+}
+.inside {
+  font-size: 2vw;
+  margin-top: 3px; 
+}
+#timer-button {
+  padding: 1vh 2vh;
+  margin-top: 4.5vh;
+  font-size: small;
+}
+#navbar #logo{
+  height: 8vh;
+  width: 8vh;
+  margin-right: 1vh;
+  margin-top: 3vh;
+} 
+#stry{
+  line-height: 4vh;
+}
+.card-container {
+  margin-top: 1vh;
+}
+.logo{
+  height: 50%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 1vh 2vh;
+}
+}
+@media (min-width: 361px) and (max-width: 480px) {
+  /* Adjust styles for mobile devices */
+.namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+}
+.inside {
+    font-size: 2vw;
+    margin-top: 3px; 
+}
+#navbar #logo{
+  height: 7vh;
+  width: 7vh;
+  margin-right: 1vh;
+  margin-top: 3vh;
+} 
+#stry{
+  line-height: 4.6vh;
+}
+.card-container {
+  margin-top: 0vh;
+}
+.logo{
+  height: 50%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 1vh 2vh;
+}
+.cardmeeting{
+  height: 30%;
+  width: 140vw;
+  font-size: 2%;
+  text-align: left;
+}
+}
+@media (min-width:481px) and (max-width: 670px) {
+  .namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+   
+}
+.inside {
+    font-size: 1.7vw;
+    margin-top: 10px; 
+}
+#stry{
+  line-height: 5.6vh;
+}
+.card-container {
+  margin-top: 5vh;
+}
+.logo{
+  height: 40%;
+  width: 40%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+.cardmeeting{
+  height: 50%;
+  width: 100vw;
+  font-size: 1px;
+  text-align: left;
+}
+}
+@media (min-width:671px) and (max-width: 900px) {
+.namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+}
+.inside {
+    font-size: 1.4vw;
+    margin-top: 17px; 
+}
+#stry{
+  line-height: 6vh;
+}
+.card-container {
+  margin-top: 5vh;
+}
+.logo{
+  height: 60%;
+  width: 60%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}
+@media (min-width: 901px) and (max-width: 1180px){
+.namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+}
+.inside {
+    font-size: 1.6vw;
+    margin-top: 27px; 
+}
+#stry{
+  line-height: 5.8vh;
+}
+.card-container {
+  margin-top: 5vh;
+}
+.logo{
+  height: 100%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}
+@media (min-width: 1181px) and (max-width: 1200px) {
+  /* Adjust styles for iPads and tablets */
+.namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+}
+.inside {
+    font-size: 1.6vw;
+    margin-top: 28px;
+}
+#stry{
+  line-height: 6.1vh;
+  font-size: large;
+}
+.card-container {
+  margin-top: 5vh;
+}
+.logo{
+  height: 100%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}
+@media (min-width: 1200px) and (max-width: 1370px){
+  /*mine screen*/
+.namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+}
+.inside {
+    font-size: 1.4vw;
+    margin-top: 31px; 
+}
+#stry{
+  line-height: 5.3vh;
+  font-size: larger;
+}
+.card-container {
+  margin-top: 10vh;
+}
+.logo{
+  height: 100%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}
+@media (min-width: 1371px) and (max-width: 1590px) {
+.namecontainer {
+    font-size: 6vw; 
+    height: 1.169em;
+}
+.inside {
+    font-size: 1.3vw;
+    margin-top: 39px; 
+}
+#stry{
+  line-height: 6vh;
+  font-size: larger;
+}
+.card-container {
+  margin-top: 10vh;
+}
+.logo{
+  height: 100%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}
+@media (min-width: 1591px) and (max-width: 1600px) {
+  /* Adjust styles for laptops */
+  .namecontainer {
+    font-size: 6vw; 
+}
+.inside {
+    font-size: 1.65vw;
+    margin-top: 3.48vh; 
+}
+#stry{
+  line-height: 6vh;
+  font-size: larger;
+  padding-top: 2.3vh;
+}
+.card-container {
+  margin-top: 10vh;
+}
+.logo{
+  height: 100%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}
+@media (min-width: 1601px) {
+  /* Adjust styles for desktops */
+  .namecontainer {
+    font-size: 4vw; 
+}
+.inside {
+    font-size: 1.5vw;
+    margin-top: 3.5vh; 
+}
+#navbar #logo{
+  height: 18vh;
+  width: 18vh;
+  margin-right: 1vh;
+}
+#stry{
+  line-height: 6vh;
+  font-size: larger;
+  padding-top: 2.9vh;
+}
+.card-container {
+  margin-top: 7vh;
+}
+.logo{
+  height: 100%;
+  width: 50%;
+}
+.card{
+  height: 50vh;
+  width: 70vw; 
+}
+.start #start{
+  padding: 2vh 3vh;
+}
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>
+      .inside {
+        font-size: 5vw;
+        color: #0097B2;
+        opacity: 0;
+        animation: enlarge 1s forwards;
+        margin-top: 0%;   
+    }
+    body {
+  margin: 0;
+  padding: 0;
+ 
+}
+
+#video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* Behind other content */
+  opacity: 0.7;
+
+}
+
+    @keyframes enlarge {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+    }
+    .invi-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Adjust the width as needed */
+    max-width: 600px; /* Set a maximum width if desired */
+    padding: 20px;
+   background: transparent;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    font-family: cursive;
+    z-index: 999; /* Ensure it appears above other content */
+    line-height:5vh;
+    height: 60vh;
+}
+.invi-container:hover{
+border: 1px solid white;
+}
+
+    .form-container {
+      
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input[type="text"] {
+      width: 50%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    #letsgo1 {
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      font-weight: bolder;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      border: 1px solid white;
+    }
+    #letsgo1:hover {
+      opacity: 0.9;
+      color: black;
+    }
+    #timer-button {
+  margin-top: 0%;
+}
+#myForm input{
+    border: none;
+    border-color: #0097B2;
+    border-radius: 6px;
+}
+#navbar {
+  background-color: transparent;
+}
+
+    #welcomep1{
+        font-size: 4vw;
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 2vw;
+    }
+    .emailinv{
+        font-size: 1.5vw;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+.emoji{
+font-size: 50px;
+  align-self: center;
+}
+</style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+              <div class="flip-box-front">
+                <img src="images/Logo.png" alt="Paris" id="logo">
+              </div>
+              <div class="flip-box-back">
+                <img src="images/Logo.png" alt="Paris" id="logo">
+              </div>
+            </div>
+          </div>
+        <div class="namecontainer">
+            <div class="inside">PHASE FIVE</div>
+        </div>
+
+        <button id="timer-button"><div id="timer">00:00</div></button>
+
+    </div>
+    <video autoplay muted loop id="video-background">
+      <source src="videos//Particle.mp4" type="video/mp4">
+    </video>
+    
+<center><div class="invi-container">
+    <!-- Add your text here -->
+    <p style="padding-bottom: 5vh;font-size: xx-large;"> Robbing the Treasury</p>
+    <p>In the heat of the moment, as we stand on the precipice of victory, a sudden obstacle looms before us. Arthuro 2345@#, the hostage ⚡, has slipped from our grasp and threatens to unravel our carefully laid plans.<br> As we unzip our bag, we find a gun, a symbol of authority. Through dialogue and persuasion, we shall sway Arthuro to surrender, ensuring that our mission remains on course towards success.</p>
+    <br>
+        <button id="letsgo1" type="submit" style="background-color: #0097B2;">FIND LOCATION</button></center>
+ <!-- Popup HTML structure -->
+<script src="script.js">
+</script>
+<script>// Add click event to center button
+    const centerButton = document.getElementById("letsgo1");
+    centerButton.addEventListener("click", redirectToIndex);
+    
+    // Function to redirect to index.html
+    function redirectToIndex() {
+      window.location.href = "22_phase5_2.html"; // Change the URL as needed
+    }</script>
+</body>
+</html>

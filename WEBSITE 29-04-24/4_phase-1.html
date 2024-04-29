@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>
+      .inside {
+        font-size: 5vw;
+        color: #0097B2;
+        opacity: 0;
+        animation: enlarge 1s forwards;
+        margin-top: 0%;   
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      
+      }
+
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1; /* Behind other content */
+      opacity: 0.7;
+
+    }
+    @keyframes enlarge {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+    }
+    .invi-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Adjust the width as needed */
+    max-width: 600px; /* Set a maximum width if desired */
+    padding: 20px;
+    background: transparent;
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    font-family: cursive;
+    z-index: 999; /* Ensure it appears above other content */
+    line-height:5vh;
+    text-align: justify;
+    height: 60vh;
+    font-size: 20px;
+    }
+    .invi-container:hover{
+    border: 1px solid white;
+    }
+    .form-container {   
+      padding: 20px;
+      border-radius: 10px;
+    }
+    input[type="text"] {
+      width: 50%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    #letsgo {
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      font-weight: bolder;
+      cursor: pointer;
+      border-radius: 6px;
+      border: none;
+      border: 1px solid white;
+    }
+    #letsgo:hover {
+      background-color: black;
+      color: #0097B2;
+    }
+    #timer-button {
+       margin-top: 0%;
+    }
+    #myForm input{
+        border: none;
+        border-color: #0097B2;
+        border-radius: 6px;
+    }
+    #navbar {
+      background-color: transparent;
+    }
+    .popup {
+        display: none;
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        height: 30%;
+        width: 30%;
+        border-radius: 20px;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        transition:  0.3s ease; 
+    }
+    .popup-content {
+        background: black;
+        border-radius: 5px;
+        width: 100%;
+        padding: 20px;
+        height: 90%;
+        font-size: large;
+        text-align: center;
+        opacity: 0.8;
+        color: white;
+    }
+    .popup .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+    .popup .close:hover {
+        color: #0097B2;
+    }
+    #welcomep1{
+        font-size: 4vw;
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Times New Roman', Times, serif;
+        margin-left: 2vw;
+    }
+    .emailinv{
+        font-size: 1.5vw;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .emoji{
+    font-size: 50px;
+      align-self: center;
+    }
+    .glow {
+      color: #fff;
+      text-align: center;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #0097B2, 0 0 20px #0097B2, 0 0 30px #0097B2, 0 0 40px #0097B2, 0 0 50px #05a7c4, 0 0 60px #05a7c4, 0 0 70px #05a7c4;
+      }
+      
+      to {
+        text-shadow: 0 0 10px #0097B2, 0 0 20px #0097B2, 0 0 30px #0097B2, 0 0 40px #0097B2, 0 0 50px #05a7c4, 0 0 60px #05a7c4, 0 0 70px #05a7c4;
+     }
+    }
+</style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+              <div class="flip-box-front">
+                <img src="images/Logo.png" alt="Paris" id="logo">
+              </div>
+              <div class="flip-box-back">
+                <img src="images/Logo.png" alt="Paris" id="logo">
+              </div>
+            </div>
+        </div>
+        <div class="namecontainer">
+            <div class="inside">PHASE ONE</div>
+        </div>
+        <button id="timer-button"><div id="timer">00:00</div></button>
+    </div>
+    <video autoplay muted loop id="video-background">
+      <source src="videos/Load Tunnel.mp4" type="video/mp4">
+    </video>
+<center>
+  <div class="invi-container">
+    <!-- Add your text here -->
+    <p style="padding-bottom: 2vh;font-size: 30px;text-align: center;">THE RECRUITMENT 🕵  </p>
+    <p>Your skills will be your ticket to the inner circle of the most audacious heist in history. Within your <b class="glow">post</b> awaits an invitation 📩 bearing the mark of the Professor himself. Click the link within to embark on a test of your prowess, a challenge tailored to separate the exceptional from the ordinary.</p>
+    <div class="form-container">
+      <form id="myForm" onsubmit="return validateForm()">
+        <center><input type="text" id="answer" placeholder="Enter your answer"><br>
+        <button id="letsgo" type="submit" >LET'S GO</button></center>
+      </form>
+    </div>
+  </div>
+</center>
+ <!-- Popup HTML structure -->
+ <div class="popup" id="popup">
+  <div class="popup-content">
+      <a href="#" class="close" onclick="closePopup()">&times;</a>
+      <p class="emoji">&#128549</p>
+      <h2>Not It!</h2>
+      <p>Please try again..</p>
+  </div>
+</div>
+<script>
+  // Function to update the timer
+  function updateTimer() {
+      const timerDisplay = document.getElementById('timer');
+      const startTime = localStorage.getItem('startTime');
+      let elapsedTime = 0;
+
+      // Calculate elapsed time if start time is available
+      if (startTime) {
+          elapsedTime = Math.floor((Date.now() - parseInt(startTime)) / 1000);
+      }
+
+      const minutes = Math.floor(elapsedTime / 60);
+      const seconds = elapsedTime % 60;
+      timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+
+  // Call the updateTimer function every second
+  const timerInterval = setInterval(updateTimer, 1000);
+
+  // Update timer immediately after page load
+  updateTimer();
+
+  // Store start time in localStorage when the page is loaded
+  if (!localStorage.getItem('startTime')) {
+      localStorage.setItem('startTime', Date.now());
+  }
+
+  // Event listener for stop button
+  document.getElementById('stop-button').addEventListener('click', function() {
+      clearInterval(timerInterval);
+      localStorage.removeItem('startTime'); // Clear start time from localStorage   
+  });
+</script>
+<script>//answer validation for mail 
+  function closePopup() {
+      document.getElementById("popup").style.display = "none";
+  }
+  
+  function validateForm() {
+      var answer = document.getElementById('answer').value.trim().toLowerCase();
+      if (answer === 'mail' ||  answer === 'Mail') {
+          window.location.href = '5_loading_phase2.html'; // Example redirection to phase 2 HTML file
+      } else {
+          // Incorrect answer, show error message popup
+          document.getElementById("popup").style.display = "block";
+      }
+      // Prevent form submission
+      return false;
+  }</script>
+<script src="script.js"></script>
+</body>
+</html>
+
+

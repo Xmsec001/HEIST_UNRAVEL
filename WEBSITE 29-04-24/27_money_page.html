@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>
+        /* Styling for video background and content */
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Use viewport width */
+            height: 100vh; /* Use viewport height */
+            object-fit: cover; /* Cover the entire viewport */
+            z-index: -1;
+        }
+
+        .content-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .namecontainer {
+            position: relative;
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        .inside {
+            font-size: 2vw;
+            color: #0097B2;
+            opacity: 0;
+            animation: enlarge 1s forwards;
+            background-color: black;
+        }
+
+        @keyframes enlarge {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="step"></h1>
+    <!-- Video background -->
+    <video id="video-background" autoplay muted loop style="width: 100%;">
+        <source src="videos/money animation.mp4" type="video/mp4">
+    </video>
+
+    <!-- Content container -->
+    <div class="content-container">
+        <div class="namecontainer">
+            <div class="inside" style="color: #0097B2;font-weight: 1000px;font-size:90%;border-radius: 10px;">SUCCESSFUL HEIST</div>
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "28_timer_end.html"; // Redirect to index.html after 3 seconds
+        }, 1700); // 3000 milliseconds = 3 seconds
+    </script>
+<script src="script.js"></script>
+</body>
+</html>

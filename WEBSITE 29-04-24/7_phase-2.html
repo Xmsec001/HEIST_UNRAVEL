@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/Logo.png">
+    <title>Heist Unravel</title>
+    <style>
+        .namecontainer {
+            position: relative;
+            text-align: center;
+            margin-top: 0px;
+        }
+        #navbar {
+            background: transparent;
+        }
+        .inside {
+            font-size: 5vw;
+            color: #0097B2;
+            opacity: 0;
+            animation: enlarge 1s forwards;
+            margin-top: 0%;
+        }
+        @keyframes enlarge {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+        #video-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin-top: 20px;
+        }
+        #video {
+            width: 100%;
+            margin-top: 17%;
+        }
+        #message {
+            position: absolute;
+            top: 50%; /* Align vertically at the center of the page */
+            left: 50%; /* Align horizontally at the center of the page */
+            transform: translate(-50%, -50%); /* Center the element precisely */
+            width: 70%;
+            height: 100%;
+            color: white;
+            line-height: 5vh;
+            display: none;
+            border-radius: 2px solid white;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 60%;
+            text-align: center;
+            margin-top: 50vh;
+        }
+        #form-container {
+            display: none;
+        }
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        #message button {
+            padding: 2vh 4vw; /* Responsive padding */
+            font-size: large; /* Responsive font size */
+            background-color: #0097B2; /* Button color */
+            color: white; /* Text color */
+            border: none;
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 2vh; /* Responsive border radius */
+            cursor: pointer;
+            opacity: 1;
+            transition: background-color 0.3s ease; /* Smooth transition */
+            margin-top: 2vh;
+        }
+        /* Hover effect for button */
+        #message button:hover {
+            background-color: #0097B2; /* Darker color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div class="flip-box">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="images/Logo.png" alt="Paris" id="logo">
+                </div>
+                <div class="flip-box-back">
+                    <img src="images/Logo.png" alt="Paris" id="logo">
+                </div>
+            </div>
+        </div>
+        <div class="namecontainer">
+            <div class="inside">PHASE TWO</div>
+        </div>
+        <button id="timer-button"><div id="timer">00:00</div></button>
+    </div>
+    <video autoplay muted loop id="video-background">
+        <source src="videos/particle.mp4" type="video/mp4">
+    </video>
+    <div id="video-container">
+        <video id="video" muted>
+            <source src="videos/prof plan.mp4" type="video/mp4" id="video-background">
+        </video>
+        <div id="message">
+            <h1>The professor ended the meeting where he unveiled the blueprint 📝 for our audacious heist. After the meeting, he <b>scrapped</b> the plan and now it's time to gather our wits and piece together the shattered fragments of our strategy. 
+          <br><center><br><button id="redirect-btn">Solved!</button> </center></h1><!-- Added button for redirection -->
+        </div>
+    </div>
+    <script>
+        var video = document.getElementById("video");
+        var message = document.getElementById("message");
+        var formContainer = document.getElementById("form-container");
+        video.controls = false; // Hide default video controls
+        video.addEventListener("ended", function() {
+            video.style.display = "none";
+            message.style.display = "flex";
+        });
+        // Event listener for double click on message
+        message.addEventListener("dblclick", function() {
+            message.style.display = "none";
+            formContainer.style.display = "block"; // Change to flex to display the form
+        });
+
+        video.play();
+
+        // Function to handle button click and redirect
+        document.getElementById("redirect-btn").addEventListener("click", function() {
+            window.location.href = "8_solved_phase2.html"; // Redirect to 1.html
+        });
+    </script>
+    <script>
+        // Function to update the timer
+        function updateTimer() {
+            const timerDisplay = document.getElementById('timer');
+            const startTime = localStorage.getItem('startTime');
+            let elapsedTime = 0;
+
+            // Calculate elapsed time if start time is available
+            if (startTime) {
+                elapsedTime = Math.floor((Date.now() - parseInt(startTime)) / 1000);
+            }
+
+            const hours = Math.floor(elapsedTime / 3600);
+            const minutes = Math.floor((elapsedTime % 3600) / 60);
+            const seconds = elapsedTime % 60;
+            timerDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Call the updateTimer function every second
+        setInterval(updateTimer, 1000);
+
+        // Update timer immediately after page load
+        updateTimer();
+
+        // Store start time in localStorage when the page is loaded
+        if (!localStorage.getItem('startTime')) {
+            localStorage.setItem('startTime', Date.now());
+        }
+        function updateTimer() {
+            const timerDisplay = document.getElementById('timer');
+            const startTime = localStorage.getItem('startTime');
+            let elapsedTime = 0;
+
+            // Calculate elapsed time if start time is available
+            if (startTime) {
+                elapsedTime = Math.floor((Date.now() - parseInt(startTime)) / 1000);
+            }
+
+            const minutes = Math.floor(elapsedTime / 60);
+            const seconds = elapsedTime % 60;
+            timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Call the updateTimer function every second
+        setInterval(updateTimer, 1000);
+
+        // Update timer immediately after page load
+        updateTimer();
+
+        // Store start time in localStorage when the page is loaded
+        if (!localStorage.getItem('startTime')) {
+            localStorage.setItem('startTime', Date.now());
+        }
+    </script>
+<script src="script.js"></script>
+</body>
+</html>
